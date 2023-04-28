@@ -3,22 +3,51 @@ import React from 'react'
 import MateiralCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
-export default function RestaurantItem() {
+export const localRestaurants = [
+    {
+        name: "Beachside Bar",
+        image_url: "https://media-cdn.tripadvisor.com/media/photo-s/09/6c/15/08/love-the-food-and-the.jpg",
+        categories: ["Cafe", "Bar"],
+        price: "$$",
+        reviews: 1244,
+        rating: 4.5,
+    },
+    {
+        name: "Benihana",
+        image_url: "https://media-cdn.tripadvisor.com/media/photo-s/0e/11/e7/0a/tilapia-over-creamy-pasta.jpg",
+        categories: ["Cafe", "Bar"],
+        price: "$$",
+        reviews: 1244,
+        rating: 3.7,
+    },
+    {
+        name: "India's Grill",
+        image_url: "https://media-cdn.tripadvisor.com/media/photo-s/18/1a/75/c5/photo0jpg.jpg",
+        categories: ["Indian", "Bar"],
+        price: "$$",
+        reviews: 700,
+        rating: 4.9,
+    },
+]
+
+export default function RestaurantItem(props) {
     return (
         <TouchableOpacity activeOpacity={1} style={{ marginBottom: 30 }}>
-            <View style={{ marginTop: 10, padding: 15, backgroundColor: "#fff" }}>
-                {/* restaurant image */}
-                <RestaurantImage />
-                {/* restaurant info */}
-                <RestaurantInfo />
-            </View>
+            {props.restaurantsData.map((restaurant, index) => (
+                <View key={index} style={{ marginTop: 10, padding: 15, backgroundColor: "#fff" }}>
+                    {/* restaurant image */}
+                    <RestaurantImage image={restaurant.image_url} />
+                    {/* restaurant info */}
+                    <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
+                </View>
+            ))}
         </TouchableOpacity>
     )
 }
 
-const RestaurantImage = () => (
+const RestaurantImage = (props) => (
     <>
-        <Image source={{ uri: "https://media.disneylandparis.com/d4th/en-usd/images/n035297_2024jun02_world_downtown-restaurant-disney-hotel-new-york-the-art-of-marvel_16-9_tcm1861-254897.jpg" }}
+        <Image source={{ uri: props.image }}
             style={{
                 width: "100%",
                 height: 180
@@ -42,7 +71,7 @@ const RestaurantImage = () => (
     </>
 )
 
-const RestaurantInfo = () => (
+const RestaurantInfo = (props) => (
     <View
         style={{
             flexDirection: "row",
@@ -52,7 +81,7 @@ const RestaurantInfo = () => (
         }}
     >
         <View >
-            <Text style={{ fontSize: 15, fontWeight: "bold" }}>Farmhouse Kitchen Thai Cuisine</Text>
+            <Text style={{ fontSize: 15, fontWeight: "bold" }}>{props.name}</Text>
             <Text style={{ fontSize: 13, color: "gray" }}>30-45 • min</Text>
         </View>
         <View style={{
@@ -64,7 +93,7 @@ const RestaurantInfo = () => (
             borderRadius: 15,
         }}
         >
-            <Text>4.5</Text>
+            <Text>{props.rating}</Text>
         </View>
     </View >
 )
