@@ -1,17 +1,28 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import MateiralCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
-const image = 'https://cdn.vox-cdn.com/thumbor/B9nKS93ZSWm4gKdUkG4x2uvvC90=/0x400:4928x2864/fit-in/1200x600/cdn.vox-cdn.com/uploads/chorus_asset/file/23209975/Wusong_Road___Rachel_Leah_Blumenthal__1.jpg'
-const title = "Farmhouse Kitchen Thai Cuisine"
-const description = "Thai Comfort Food $$ • San Francisco • Thai • Comfort Food • Family Friendly"
+const yelpRestaurantInfo = {
+    name: "Farmhouse Kitchen Thai Cuisine",
+    image: "https://cdn.vox-cdn.com/thumbor/B9nKS93ZSWm4gKdUkG4x2uvvC90=/0x400:4928x2864/fit-in/1200x600/cdn.vox-cdn.com/uploads/chorus_asset/file/23209975/Wusong_Road___Rachel_Leah_Blumenthal__1.jpg",
+    price: "$$",
+    reviews: "1500",
+    rating: 4.5,
+    categories: [{ title: "Thai" }, { title: "Comfort Food" }]
+}
+
+const { name, image, price, reviews, rating, categories } = yelpRestaurantInfo
+
+const formattedCategories = categories.map((cat) => cat.title).join(" • ")
+
+const description = `${formattedCategories} ${price ? " • " + price : ""} • 🎫 • ${rating} ⭐ (${reviews}+)`
+
 
 export default function About() {
     return (
         <View>
             <RestaurantImage image={image} />
-            <RestaurantTitle title={title} />
+            <RestaurantName name={name} />
             <RestaurantDescription description={description} />
         </View>
     )
@@ -22,7 +33,7 @@ const RestaurantImage = (props) => (
 
 )
 
-const RestaurantTitle = (props) => (
+const RestaurantName = (props) => (
 
     <Text
         style={{
@@ -32,7 +43,7 @@ const RestaurantTitle = (props) => (
             marginHorizontal: 15
         }}
     >
-        {props.title}
+        {props.name}
     </Text>
 
 )
