@@ -2,17 +2,6 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 
-const yelpRestaurantInfo = {
-    name: "Farmhouse Kitchen Thai Cuisine",
-    image: "https://cdn.vox-cdn.com/thumbor/B9nKS93ZSWm4gKdUkG4x2uvvC90=/0x400:4928x2864/fit-in/1200x600/cdn.vox-cdn.com/uploads/chorus_asset/file/23209975/Wusong_Road___Rachel_Leah_Blumenthal__1.jpg",
-    price: "$$",
-    reviews: "1500",
-    rating: 4.5,
-    categories: [{ title: "Thai" }, { title: "Comfort Food" }]
-}
-
-
-
 export default function About(props) {
     const { name, image, price, reviews, rating, categories } = props.route.params
 
