@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native-web'
 import OrderItem from './OrderItem'
 import firebase from '../../firebase'
 
-export default function ViewCart() {
+export default function ViewCart({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false)
 
     const { items, restaurantName } = useSelector((state) => state.cartReducer.selectedItems)
@@ -18,6 +18,10 @@ export default function ViewCart() {
         currency: "USD",
     })
 
+    const tax = (parseFloat(totalUSD.replace('$', '')) * 0.15).toFixed(2)  // 15% tax
+
+    const totalWithTax = (parseFloat(totalUSD.replace('$', '')) + parseFloat(tax)).toFixed(2)  // total + tax
+
     const addOrderToFirebase = () => {
         const db = firebase.firestore()
         db.collection('orders').add({
@@ -26,11 +30,9 @@ export default function ViewCart() {
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         })
         setModalVisible(false)
+        navigation.navigate('OrderCompleted')
     }
 
-    const tax = (parseFloat(totalUSD.replace('$', '')) * 0.15).toFixed(2)  // 15% tax
-
-    const totalWithTax = (parseFloat(totalUSD.replace('$', '')) + parseFloat(tax)).toFixed(2)  // total + tax
 
     const styles = StyleSheet.create({
         modalContainer: {
