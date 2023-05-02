@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { StyleSheet } from 'react-native-web'
 import OrderItem from './OrderItem'
+import firebase from '../../firebase'
 
 export default function ViewCart() {
     const [modalVisible, setModalVisible] = useState(false)
@@ -16,6 +17,16 @@ export default function ViewCart() {
         style: "currency",
         currency: "USD",
     })
+
+    const addOrderToFirebase = () => {
+        const db = firebase.firestore()
+        db.collection('orders').add({
+            items: items,
+            restaurantName: restaurantName,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        setModalVisible(false)
+    }
 
     const tax = (parseFloat(totalUSD.replace('$', '')) * 0.15).toFixed(2)  // 15% tax
 
@@ -57,7 +68,7 @@ export default function ViewCart() {
             <>
                 <View style={styles.modalContainer} >
                     <View style={styles.modalCheckoutContainer}>
-                        <Text style={styles.restaurantName} >Your Order from {restaurantName}</Text>
+                        <Text style={styles.restaurantName} >Order - {restaurantName}</Text>
                         {items.map((item, index) => (
                             <OrderItem key={index} item={item} />
                         ))}
@@ -85,7 +96,7 @@ export default function ViewCart() {
                                     position: "relative",
                                     alignItems: "center",
                                 }}
-                                onPress={() => setModalVisible(false)}
+                                onPress={() => { addOrderToFirebase() }}
                             >
                                 <Text style={{ color: "white", fontSize: 20 }}>Checkout </Text>
                                 <Text style={{ color: "white", fontSize: 20 }}>({total ? '$' + totalWithTax : ""})</Text>
@@ -134,7 +145,7 @@ export default function ViewCart() {
                                 position: "relative",
                                 // alignItems: "center",
                             }}
-                            onPress={() => setModalVisible(true)}
+                            onPress={() => { setModalVisible(true) }}
                         >
                             <Text style={{ color: "white", fontSize: 20, marginRight: 25 }}>View Cart</Text>
                             <Text style={{ color: "white", fontSize: 20 }}>({totalUSD})</Text>
