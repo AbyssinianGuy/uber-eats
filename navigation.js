@@ -29,3 +29,4 @@ export default function RootNavigation() {
         </ReactProvider>
     )
 }
+//todo: create a navigation for web
