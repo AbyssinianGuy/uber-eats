@@ -1,12 +1,14 @@
 import { View, Text, TouchableOpacity, Modal } from 'react-native'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { StyleSheet } from 'react-native-web'
 import OrderItem from './OrderItem'
 import firebase from '../../firebase'
+import LottieView from 'lottie-react-native'
 
 export default function ViewCart({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const { items, restaurantName } = useSelector((state) => state.cartReducer.selectedItems)
     const total = items
@@ -23,14 +25,19 @@ export default function ViewCart({ navigation }) {
     const totalWithTax = (parseFloat(totalUSD.replace('$', '')) + parseFloat(tax)).toFixed(2)  // total + tax
 
     const addOrderToFirebase = () => {
+        setLoading(true)
         const db = firebase.firestore()
         db.collection('orders').add({
             items: items,
             restaurantName: restaurantName,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        }).then(() => {
+            setTimeout(() => {
+                setLoading(false)
+                setModalVisible(false)
+                navigation.navigate('OrderCompleted')
+            }, 2500)
         })
-        setModalVisible(false)
-        navigation.navigate('OrderCompleted')
     }
 
 
@@ -98,7 +105,10 @@ export default function ViewCart({ navigation }) {
                                     position: "relative",
                                     alignItems: "center",
                                 }}
-                                onPress={() => { addOrderToFirebase() }}
+                                onPress={() => {
+                                    addOrderToFirebase()
+                                    setModalVisible(false)
+                                }}
                             >
                                 <Text style={{ color: "white", fontSize: 20 }}>Checkout </Text>
                                 <Text style={{ color: "white", fontSize: 20 }}>({total ? '$' + totalWithTax : ""})</Text>
@@ -145,7 +155,6 @@ export default function ViewCart({ navigation }) {
                                 borderRadius: 30,
                                 width: 300,
                                 position: "relative",
-                                // alignItems: "center",
                             }}
                             onPress={() => { setModalVisible(true) }}
                         >
@@ -154,6 +163,40 @@ export default function ViewCart({ navigation }) {
                         </TouchableOpacity>
                     </View>
                 </View>) : (<></>)}
+            {
+                loading ? (
+                    <View style={{
+                        backgroundColor: "rgba(0,0,0,0.6)",
+                        position: "absolute",
+                        justifyContent: "center",
+                        flex: 1,
+                        width: "100%",
+                        height: "100%",
+                        alignItems: "center",
+
+                        // zIndex: 999,
+
+                    }}>
+                        <View style={{
+                            padding: 20,
+                            borderRadius: 15,
+                            alignItems: "center",
+                        }}>
+                            <LottieView
+                                style={{ height: 200 }}
+                                source={require("../../assets/animations/scanner.json")}
+                                autoPlay
+                                speed={3}
+                            />
+                            <Text style={{
+                                fontSize: 20,
+                                fontWeight: "bold",
+                                color: "white",
+                            }}>Processing Order</Text>
+                        </View>
+                    </View>
+                ) : (<></>)
+            }
         </>
     )
 }
