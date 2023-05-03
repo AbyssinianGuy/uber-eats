@@ -7,9 +7,9 @@ import RestaurantItem, { localRestaurants } from '../components/home/RestaurantI
 import { Divider } from 'react-native-elements'
 import BottomTabs from '../components/home/BottomTabs'
 import LottieView from 'lottie-react-native'
+// import { YELP_API_KEY } from "../@env"
 
-const YELP_API_KEY = "z0_ctSoBhgsZSfvKJgLK0rkVhV6z55zgHFltHpWKwXkMiqAOr_GNzOTLrLtLO8Y4XMmwPhyOnwcEj8FVy6HD_uB4dgoh2MzOUv2oBcpb9SBcJmuDRDIHBAPFyEdLZHYx"
-
+YELP_API_KEY = "z0_ctSoBhgsZSfvKJgLK0rkVhV6z55zgHFltHpWKwXkMiqAOr_GNzOTLrLtLO8Y4XMmwPhyOnwcEj8FVy6HD_uB4dgoh2MzOUv2oBcpb9SBcJmuDRDIHBAPFyEdLZHYx"
 
 export default function Home({ navigation }) {
     const [restaurantsData, setRestaurantsData] = useState(localRestaurants)

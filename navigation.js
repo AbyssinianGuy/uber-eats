@@ -10,6 +10,7 @@ import Browse from './screens/Browse';
 import Orders from './screens/Orders';
 import Grocery from './screens/Grocery';
 import Account from './screens/Account';
+import GroceryDetail from './screens/GroceryDetail';
 
 
 const store = configureAppStore()
@@ -27,6 +28,7 @@ export default function RootNavigation() {
                 <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions}>
                     <Stack.Screen name="Home" component={Home} />
                     <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} />
+                    <Stack.Screen name="GroceryDetail" component={GroceryDetail} />
                     <Stack.Screen name="OrderCompleted" component={OrderCompleted} />
                     <Stack.Screen name="Browse" component={Browse} />
                     <Stack.Screen name="Grocery" component={Grocery} />
