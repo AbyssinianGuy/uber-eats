@@ -12,6 +12,19 @@ import axios from 'axios'
 YELP_API_KEY = "z0_ctSoBhgsZSfvKJgLK0rkVhV6z55zgHFltHpWKwXkMiqAOr_GNzOTLrLtLO8Y4XMmwPhyOnwcEj8FVy6HD_uB4dgoh2MzOUv2oBcpb9SBcJmuDRDIHBAPFyEdLZHYx"
 GOOGLE_API_KEY = "AIzaSyDZIVArpw23ZqN2LA_JPOQisNaGJoElk5E"
 
+/*
+    1. Cities don't get updated immediately leading to a delay in the grocery stores in the city
+    2. format the data so that it fits perfectly in the GroceryItem 
+                            componentname: store.name,
+                            image: store.image_url,
+                            price: store.price,
+                            reviews: store.review_count,
+                            rating: store.rating,
+                            categories: store.categories,
+    3. get the photo_url from the storeData
+    4. create Grocery categories.
+ */
+
 
 export default function Grocery({ navigation }) {
 
