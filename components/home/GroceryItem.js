@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import MateiralCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
+GOOGLE_API_KEY = "AIzaSyDZIVArpw23ZqN2LA_JPOQisNaGJoElk5E"
 
 export const localStores = [
     {
@@ -30,36 +31,45 @@ export const localStores = [
     },
 ]
 
+const imageBaseUrl = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=' + GOOGLE_API_KEY;
+const defaultImageUrl = 'https://via.placeholder.com/400'; // Add a placeholder image URL as a fallback
 
 export default function GroceryItem({ navigation, ...props }) {
+
     return (
         <>
-            {props.storesData.map((store, index) => (
-                <TouchableOpacity
-                    key={index}
-                    activeOpacity={1}
-                    style={{ marginBottom: 30 }}
-                    onPress={() =>
-                        navigation.navigate("GroceryDetail", {
-                            name: store.name,
-                            image: store.image_url,
-                            price: store.price,
-                            reviews: store.review_count,
-                            rating: store.rating,
-                            categories: store.categories,
-                        })
-                    }
-                >
-                    <View
-                        style={{ marginTop: 10, padding: 15, backgroundColor: "#fff" }}
+            {props.storesData?.map((store, index) => {
+                const photoReference = store.photos && store.photos[0]?.photo_reference;
+                const imageUrl = photoReference ? `${imageBaseUrl}&photoreference=${photoReference}` : defaultImageUrl;
+
+                return (
+                    <TouchableOpacity
+                        key={index}
+                        activeOpacity={1}
+                        style={{ marginBottom: 30 }}
+                        onPress={() =>
+                            navigation.navigate("GroceryDetail", {
+                                name: store.name,
+                                image: imageUrl,
+                                price: store.price_level,
+                                reviews: store.user_ratings_total,
+                                rating: store.rating,
+                                categories: store.types,
+                            })
+                        }
                     >
-                        {/* store image */}
-                        <GroceryImage image={store.image_url} />
-                        {/* store info */}
-                        <GroceryInfo name={store.name} rating={store.rating} />
-                    </View>
-                </TouchableOpacity>
-            ))}
+                        <View
+                            style={{ marginTop: 10, padding: 15, backgroundColor: "#fff" }}
+                        >
+                            {/* store image */}
+                            <GroceryImage image={imageUrl} />
+                            {/* store info */}
+                            <GroceryInfo name={store.name} rating={store.rating} />
+                        </View>
+                    </TouchableOpacity>
+                );
+            })
+            }
         </>
     )
 }
@@ -99,7 +109,7 @@ const GroceryInfo = (props) => (
     >
         <View>
             <Text style={{ fontSize: 15, fontWeight: "bold" }}>{props.name}</Text>
-            <Text style={{ fontSize: 13, color: "gray" }}>30-45 . min</Text>
+            <Text style={{ fontSize: 13, color: "gray" }}>30-45 • min</Text>
         </View>
         <View style={{
             backgroundColor: "#eee",

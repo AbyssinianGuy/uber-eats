@@ -156,7 +156,7 @@ export default function Orders() {
                         style={{
                             backgroundColor: '#5cb108',
                             paddingHorizontal: 10,
-                            paddingVertical: 5,
+                            paddingVertical: 10,
                             borderRadius: 5,
                             marginTop: 10,
                             alignItems: 'center'

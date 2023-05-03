@@ -36,10 +36,14 @@ export default function Home({ navigation }) {
         }, 2500)
     }
 
+    // startApp()
     useEffect(() => {
-        startApp()
         getRestaurantsFromYelp()
     }, [city, activeTab])
+
+    useEffect(() => {
+        startApp()
+    }, [])
     return (
         <>
             {loading ?

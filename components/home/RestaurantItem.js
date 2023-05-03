@@ -33,7 +33,7 @@ export const localRestaurants = [
 export default function RestaurantItem({ navigation, ...props }) {
     return (
         <>
-            {props.restaurantsData.map((restaurant, index) => (
+            {props.restaurantsData?.map((restaurant, index) => (
                 <TouchableOpacity
                     key={index}
                     activeOpacity={1}
