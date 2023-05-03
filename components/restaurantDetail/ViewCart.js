@@ -58,6 +58,7 @@ export default function ViewCart({ navigation }) {
             fontWeight: "600",
             fontSize: 18,
             marginTop: 10,
+            alignItems: "center",
         },
         subTotalContainer: {
             flexDirection: "row",
@@ -77,7 +78,29 @@ export default function ViewCart({ navigation }) {
             <>
                 <View style={styles.modalContainer} >
                     <View style={styles.modalCheckoutContainer}>
-                        <Text style={styles.restaurantName} >Order - {restaurantName}</Text>
+                        <TouchableOpacity style={{
+                            borderRadius: 30,
+                            borderRadius: 30,
+                            flexDirection: "row",
+                            alignContent: "center",
+                            justifyContent: "flex-end"
+                        }}
+                        >
+                            <Text style=
+                                {{
+                                    color: "black",
+                                    fontSize: 25,
+                                    textAlign: "right",
+                                }}
+                                onPress={() => setModalVisible(false)}
+                            >⚔️</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.restaurantName} >
+                            Order - {restaurantName}
+
+                        </Text>
+
+
                         {items.map((item, index) => (
                             <OrderItem key={index} item={item} />
                         ))}
@@ -111,8 +134,9 @@ export default function ViewCart({ navigation }) {
                                 }}
                             >
                                 <Text style={{ color: "white", fontSize: 20 }}>Checkout </Text>
-                                <Text style={{ color: "white", fontSize: 20 }}>({total ? '$' + totalWithTax : ""})</Text>
+                                <Text style={{ color: "white", fontSize: 20 }}>({total ? '$' + totalWithTax : ""}) 😋</Text>
                             </TouchableOpacity>
+
                         </View>
                     </View>
                 </View>
