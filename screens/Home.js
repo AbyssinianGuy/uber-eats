@@ -36,7 +36,6 @@ export default function Home({ navigation }) {
         }, 2500)
     }
 
-
     useEffect(() => {
         startApp()
         getRestaurantsFromYelp()

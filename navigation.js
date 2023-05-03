@@ -6,6 +6,10 @@ import RestaurantDetail from './screens/RestaurantDetail'
 import { Provider as ReactProvider } from 'react-redux';
 import configureAppStore from './redux/store';
 import OrderCompleted from './screens/OrderCompleted';
+import Browse from './screens/Browse';
+import Orders from './screens/Orders';
+import Grocery from './screens/Grocery';
+import Account from './screens/Account';
 
 
 const store = configureAppStore()
@@ -24,6 +28,10 @@ export default function RootNavigation() {
                     <Stack.Screen name="Home" component={Home} />
                     <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} />
                     <Stack.Screen name="OrderCompleted" component={OrderCompleted} />
+                    <Stack.Screen name="Browse" component={Browse} />
+                    <Stack.Screen name="Grocery" component={Grocery} />
+                    <Stack.Screen name="Orders" component={Orders} />
+                    <Stack.Screen name="Account" component={Account} />
                 </Stack.Navigator>
             </NavigationContainer>
         </ReactProvider>
