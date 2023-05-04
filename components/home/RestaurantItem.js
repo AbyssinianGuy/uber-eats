@@ -46,6 +46,7 @@ export default function RestaurantItem({ navigation, ...props }) {
                             reviews: restaurant.review_count,
                             rating: restaurant.rating,
                             categories: restaurant.categories,
+                            location: props.city,
                         })
                     }
                 >

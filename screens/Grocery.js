@@ -11,7 +11,7 @@ import axios from 'axios'
 
 // YELP_API_KEY = "z0_ctSoBhgsZSfvKJgLK0rkVhV6z55zgHFltHpWKwXkMiqAOr_GNzOTLrLtLO8Y4XMmwPhyOnwcEj8FVy6HD_uB4dgoh2MzOUv2oBcpb9SBcJmuDRDIHBAPFyEdLZHYx"
 GOOGLE_API_KEY = "AIzaSyDZIVArpw23ZqN2LA_JPOQisNaGJoElk5E"
-
+SPOONACULAR_API_KEY = "5c700f04e2cd4482af84fba0459a65e1"
 
 export default function Grocery({ navigation }) {
 
@@ -46,20 +46,22 @@ export default function Grocery({ navigation }) {
                     key: GOOGLE_API_KEY,
                 },
             })
-            console.log(coordinates)
+            // console.log(coordinates)
             setStoreData(response.data?.results);
         } catch (error) {
             console.error('Error fetching shopping stores:', error);
         }
     };
 
+
     useEffect(() => {
         geocodeCity(city)
         getShoppingStores(coordinates)
     }, [city])
 
-
-
+    useEffect(() => {
+        getShoppingStores(coordinates)
+    }, [coordinates])
 
     return (
         <SafeAreaView style={{ backgroundColor: "#ddd", flex: 1 }}>

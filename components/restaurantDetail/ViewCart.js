@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Modal } from 'react-native'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { StyleSheet } from 'react-native-web'
+import { StyleSheet } from 'react-native'
 import OrderItem from './OrderItem'
 import firebase from '../../firebase'
 import LottieView from 'lottie-react-native'
@@ -12,7 +12,7 @@ export default function ViewCart({ navigation }) {
 
     const { items, restaurantName } = useSelector((state) => state.cartReducer.selectedItems)
     const total = items
-        .map((item) => Number(item.price.replace("$", "")))
+        .map((item) => Number(item.price?.replace("$", "")))
         .reduce((prev, curr) => prev + curr, 0)
 
     const totalUSD = total.toLocaleString("en", {
@@ -154,7 +154,7 @@ export default function ViewCart({ navigation }) {
             >
                 {checkoutModalContent()}
             </Modal>
-            {total ? (
+            {totalWithTax > 0 ? (
                 <View style={{
                     flex: 1,
                     alignItems: "center",
@@ -197,9 +197,6 @@ export default function ViewCart({ navigation }) {
                         width: "100%",
                         height: "100%",
                         alignItems: "center",
-
-                        // zIndex: 999,
-
                     }}>
                         <View style={{
                             padding: 20,

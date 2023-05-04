@@ -11,6 +11,7 @@ import LottieView from 'lottie-react-native'
 
 YELP_API_KEY = "z0_ctSoBhgsZSfvKJgLK0rkVhV6z55zgHFltHpWKwXkMiqAOr_GNzOTLrLtLO8Y4XMmwPhyOnwcEj8FVy6HD_uB4dgoh2MzOUv2oBcpb9SBcJmuDRDIHBAPFyEdLZHYx"
 
+
 export default function Home({ navigation }) {
     const [restaurantsData, setRestaurantsData] = useState(localRestaurants)
     const [city, setCity] = useState("Washingtondc")
@@ -28,6 +29,7 @@ export default function Home({ navigation }) {
             .then((res) => res.json())
             .then((json) => setRestaurantsData(json.businesses.filter((business) => business.transactions.includes(activeTab.toLowerCase()))))
     }
+
     // create a function that starts the app starting animation
     const startApp = () => {
         setLoading(true)
@@ -63,7 +65,7 @@ export default function Home({ navigation }) {
                         </View>
                         <ScrollView showsVerticalScrollIndicator={false}>
                             <Categories />
-                            <RestaurantItem restaurantsData={restaurantsData} navigation={navigation} />
+                            <RestaurantItem city={city} restaurantsData={restaurantsData} navigation={navigation} />
                         </ScrollView>
                         <Divider width={1} />
                         <BottomTabs />

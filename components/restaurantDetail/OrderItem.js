@@ -3,6 +3,7 @@ import React from 'react'
 
 export default function OrderItem({ item }) {
     const { title, price } = item
+    // console.log(item, "😉")
     return (
         <View style={{
             flexDirection: "row",

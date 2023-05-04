@@ -43,6 +43,7 @@ export default function MenuItems({
     const isFoodInCart = (food, cartItems) =>
         Boolean(cartItems.find((item) => item.title === food.title))
 
+
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {foods.map((food, index) => (
