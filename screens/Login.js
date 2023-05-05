@@ -7,6 +7,10 @@ import LottieView from 'lottie-react-native'
 import { useState } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { Platform } from 'react-native'
+import * as Device from 'expo-device'
+
+const deviceType = Device.deviceName === 'iPad' ? "Tablet" : "Phone"
+
 
 const styles = StyleSheet.create({
     input_error: {
@@ -54,6 +58,8 @@ const styles = StyleSheet.create({
 })
 
 export default function Login({ navigation }) {
+
+
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -103,7 +109,7 @@ export default function Login({ navigation }) {
                 {/* insert the login.json lattie animation */}
                 <LottieView
                     style={{
-                        height: 200,
+                        height: deviceType === 'Tablet' ? 400 : 200,
                         alignSelf: "center",
                         marginBottom: 30,
                         borderRadius: 100

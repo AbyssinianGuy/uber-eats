@@ -3,14 +3,19 @@ import React from 'react'
 import { SafeAreaView } from 'react-native'
 import LottieView from 'lottie-react-native'
 import { Button } from 'react-native-elements'
+import * as Device from 'expo-device'
 
+const deviceType = Device.deviceName === 'iPad' ? "Tablet" : "Phone"
+const deviceModel = Device.modelName.includes("iPhone") ? "iPhone" : "Android"
+console.log("OS", deviceType)
+console.log("device type", deviceModel)
 
 export default function StartingScreen({ navigation }) {
     return (
         // This is the starting screen of the app
         <View
             style={{
-                backgroundColor: "#eee",
+                backgroundColor: "#f7f7f7",
                 justifyContent: "center"
             }}
         >
@@ -18,7 +23,7 @@ export default function StartingScreen({ navigation }) {
 
             <LottieView
                 style={{
-                    height: 400,
+                    height: deviceType === 'Tablet' ? 600 : deviceModel === "iPhone" ? 400 : 500,
                     alignSelf: "center",
                     marginBottom: 30,
                     borderRadius: 100
@@ -95,7 +100,7 @@ export default function StartingScreen({ navigation }) {
                     height: 200,
                     alignSelf: "center",
                     marginBottom: 30,
-                    backgroundColor: "#eee",
+                    backgroundColor: "#f7f7f7",
                     borderRadius: 100
                 }}
                 source={require("../assets/animations/welcome-3.json")}

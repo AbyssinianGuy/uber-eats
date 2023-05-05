@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
 import * as Device from 'expo-device'
 
-const deviceType = Device.getDeviceType === 2 ? "Tablet" : "Handset"
+const deviceType = Device.deviceName === 'iPad' ? "Tablet" : "Phone"
 
 const styles = StyleSheet.create({
     datePickerContainer: {
