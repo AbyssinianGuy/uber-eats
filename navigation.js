@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import Home from './screens/Home'
 import RestaurantDetail from './screens/RestaurantDetail'
 import { Provider as ReactProvider } from 'react-redux';
@@ -12,6 +12,9 @@ import Grocery from './screens/Grocery';
 import Account from './screens/Account';
 import GroceryDetail from './screens/GroceryDetail';
 import Login from './screens/Login';
+import StartingScreen from './screens/StartingScreen';
+import Signup from './screens/Signup';
+import SplashScreen from './components/SplashScreen';
 
 
 const store = configureAppStore()
@@ -26,8 +29,17 @@ export default function RootNavigation() {
     return (
         <ReactProvider store={store}>
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Login" screenOptions={screenOptions}>
+                <Stack.Navigator initialRouteName="SplashScreen" screenOptions={screenOptions}>
+                    <Stack.Screen name="SplashScreen" component={SplashScreen} />
                     <Stack.Screen name="Home" component={Home} />
+                    <Stack.Screen name="Login" component={Login} options={{
+                        cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+                        gestureDirection: "vertical"
+                    }} />
+                    <Stack.Screen name="Signup" component={Signup} options={{
+                        cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+                        gestureDirection: "vertical",
+                    }} />
                     <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} />
                     <Stack.Screen name="GroceryDetail" component={GroceryDetail} />
                     <Stack.Screen name="OrderCompleted" component={OrderCompleted} />
@@ -35,7 +47,8 @@ export default function RootNavigation() {
                     <Stack.Screen name="Grocery" component={Grocery} />
                     <Stack.Screen name="Orders" component={Orders} />
                     <Stack.Screen name="Account" component={Account} />
-                    <Stack.Screen name="Login" component={Login} />
+                    <Stack.Screen name="StartingScreen" component={StartingScreen} />
+
 
                 </Stack.Navigator>
             </NavigationContainer>
