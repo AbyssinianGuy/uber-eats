@@ -39,6 +39,7 @@ Tools and APIs:
 5. Geo location API
 6. Spoonacular API
 
+##NOTE: Before Running this you need to replace all the api fields with your api keys from the above vendors. All API keys used in this project are free.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   <!-- iOS -->
