@@ -15,8 +15,6 @@ const profile_info = {
     dob: "01/01/2000"
 }
 
-
-
 export default function Account({ navigation }) {
     const logout_animation = (page, navigation) => {
         return (
@@ -42,31 +40,28 @@ export default function Account({ navigation }) {
     return (
         <SafeAreaView style={{ backgroundColor: "#ddd", flex: 1 }}>
             <View style={{ backgroundColor: "#ddd", padding: 15, alignItems: 'center' }}>
-                {/* create a header with the text Profile */}
                 <Text style={{
                     fontSize: 30,
                     fontWeight: "bold"
-                }}
-                >
+                }}>
                     Profile
                 </Text>
-
             </View>
             <Divider width={1} />
-            <View style={{ backgroundColor: "white", padding: 15 }}>
+            <View style={{ backgroundColor: "#ddd", padding: 15 }}>
                 <LottieView
-                    style={{ height: 200, alignSelf: "center", marginBottom: 30, backgroundColor: "#5cb108", borderRadius: 100 }}
+                    style={{ height: 200, alignSelf: "center", marginBottom: -25, backgroundColor: "#ddd", borderRadius: 100 }}
                     source={require("../assets/animations/profile.json")}
                     autoPlay
                     speed={0.5}
                     loop={true}
                 />
             </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={{ backgroundColor: "white", padding: 15 }}>
-                    {/* Add profile information such as name, email, phonenumber, date of birth */}
-                    {/* make all the content uniform and add margins and styles for all of them */}
-
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={{ backgroundColor: "#ddd", padding: 15 }}
+            >
+                <View style={{ backgroundColor: "#E5D9B6", padding: 15, borderRadius: 30, flex: 1, alignItems: "stretch" }}>
                     <Text style={{
                         fontSize: 20,
                         fontWeight: "bold",
@@ -116,79 +111,156 @@ export default function Account({ navigation }) {
                         </Text>
                     </Text>
                 </View>
-                <Divider width={1} />
-                {/* Add different options such as account information, change payment method, contact support, about us, and logout */}
+                <Divider />
                 <View style={{
-                    // height: 20,
                     alignItems: "center",
                     justifyContent: "center",
                     margin: 15,
                     flexDirection: "column",
-
-                }}
-                >
+                    padding: 15,
+                    borderRadius: 30
+                }}>
                     <Text style={{
                         fontSize: 30,
                         fontWeight: "bold",
                         textAlign: "center",
                         marginBottom: 10
                     }}>Account Information</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        // onPress={() => navigation.navigate("EditProfile")}
+                        style={{
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10,
+                            marginBottom: 10
+                        }}
+                    >
                         <Text style={{
                             fontSize: 20,
                             fontWeight: "bold",
                             textAlign: "center",
-                            marginBottom: 10
-                        }}>Change Payment Method</Text>
+                            marginBottom: 10,
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10
+                        }}>Payment Methods</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+
+                    <TouchableOpacity
+                        // onPress={() => navigation.navigate("EditProfile")}
+                        style={{
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10,
+                            marginBottom: 10
+                        }}
+                    >
                         <Text style={{
                             fontSize: 20,
                             fontWeight: "bold",
                             textAlign: "center",
-                            marginBottom: 10
+                            marginBottom: 10,
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10
                         }}>Notifications</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10,
+                            marginBottom: 10
+                        }}
+                    >
                         <Text style={{
                             fontSize: 20,
                             fontWeight: "bold",
                             textAlign: "center",
-                            marginBottom: 10
+                            marginBottom: 10,
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10
                         }}>Rewards & Gift Cards</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10,
+                            marginBottom: 10
+                        }}
+                    >
                         <Text style={{
                             fontSize: 20,
                             fontWeight: "bold",
                             textAlign: "center",
-                            marginBottom: 10
+                            marginBottom: 10,
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10
                         }}>Contact Support</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10,
+                            marginBottom: 10
+                        }}
+                    >
                         <Text style={{
                             fontSize: 20,
                             fontWeight: "bold",
                             textAlign: "center",
-                            marginBottom: 10
+                            marginBottom: 10,
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10
                         }}>Privacy</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10,
+                            marginBottom: 10
+                        }}
+                    >
                         <Text style={{
                             fontSize: 20,
                             fontWeight: "bold",
                             textAlign: "center",
-                            marginBottom: 10
+                            marginBottom: 10,
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10
                         }}>About Us</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10,
+                            marginBottom: 10
+                        }}
+                    >
                         <Text style={{
                             fontSize: 20,
                             fontWeight: "bold",
                             textAlign: "center",
-                            marginBottom: 10
+                            marginBottom: 10,
+                            backgroundColor: "#f0f0f0",
+                            padding: 10,
+                            borderRadius: 10
                         }}>Legal</Text>
                     </TouchableOpacity>
+
                     <TouchableOpacity
                         onPress={() => logout_animation("Login", navigation)}
                         style={{
@@ -200,10 +272,8 @@ export default function Account({ navigation }) {
                             justifyContent: "center",
                             marginTop: 10,
                             marginBottom: 10
-
                         }}
                     >
-
                         <Text style={{
                             fontSize: 20,
                             fontWeight: "bold",
