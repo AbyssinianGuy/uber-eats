@@ -7,7 +7,7 @@ import ViewCart from '../components/restaurantDetail/ViewCart'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-SPOONACULAR_API_KEY = "5c700f04e2cd4482af84fba0459a65e1"
+SPOONACULAR_API_KEY = "<your api key>"
 
 
 const foods = [

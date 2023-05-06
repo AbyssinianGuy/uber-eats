@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import MateiralCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-GOOGLE_API_KEY = "AIzaSyDZIVArpw23ZqN2LA_JPOQisNaGJoElk5E"
+GOOGLE_API_KEY = "<Your api key>"
 
 export const localStores = [
     {

@@ -9,7 +9,7 @@ import BottomTabs from '../components/home/BottomTabs'
 import LottieView from 'lottie-react-native'
 // import { YELP_API_KEY } from "../@env"
 
-YELP_API_KEY = "z0_ctSoBhgsZSfvKJgLK0rkVhV6z55zgHFltHpWKwXkMiqAOr_GNzOTLrLtLO8Y4XMmwPhyOnwcEj8FVy6HD_uB4dgoh2MzOUv2oBcpb9SBcJmuDRDIHBAPFyEdLZHYx"
+YELP_API_KEY = "<your api key>"
 
 
 export default function Home({ navigation }) {

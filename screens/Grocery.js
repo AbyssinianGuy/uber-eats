@@ -10,8 +10,8 @@ import Categories from '../components/home/Categories'
 import axios from 'axios'
 
 // YELP_API_KEY = "z0_ctSoBhgsZSfvKJgLK0rkVhV6z55zgHFltHpWKwXkMiqAOr_GNzOTLrLtLO8Y4XMmwPhyOnwcEj8FVy6HD_uB4dgoh2MzOUv2oBcpb9SBcJmuDRDIHBAPFyEdLZHYx"
-GOOGLE_API_KEY = "AIzaSyDZIVArpw23ZqN2LA_JPOQisNaGJoElk5E"
-SPOONACULAR_API_KEY = "5c700f04e2cd4482af84fba0459a65e1"
+GOOGLE_API_KEY = "<your api key>"
+SPOONACULAR_API_KEY = "<your api key>"
 
 export default function Grocery({ navigation }) {
 
